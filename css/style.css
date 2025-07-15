@@ -1,0 +1,465 @@
+/* General Body Styles */
+body {
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
+    font-family: Arial, Helvetica, sans-serif; /* Consistent font */
+    line-height: 1.6;
+    color: #333;
+    display: flex; /* Makes header and main siblings for side-by-side layout */
+    min-height: 100vh; /* Ensures body takes at least full viewport height */
+    box-sizing: border-box; /* Ensures padding/border are included in element's total width/height */
+}
+
+/* Base styles for all main sections (excluding the special #Home styling) */
+main section {
+    height: 100vh;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 40px; /* Space between sections */
+}
+main section:last-of-type {
+    margin-bottom: 0; /* Remove margin below the very last section in main */
+}
+
+/* Header (Side Navigation Bar) */
+header {
+    color: white;
+    background-color: #2c3e50; /* A darker, professional background */
+    position: fixed; /* Makes the header fixed */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays on top */
+    padding: 20px 0; /* Vertical padding, horizontal handled by inner elements */
+    width: 280px; /* Adjusted width for the sidebar. Keep this consistent! */
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Allows scrolling if content inside sidebar overflows */
+    transition: ease-in-out 0.3s; /* Smooth transition for any changes */
+    border-right: 1px solid #444; /* Subtle border for separation */
+    box-sizing: border-box; /* Include padding in width */
+
+    /* Internal flexbox for header sections (profile, social, nav) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally within the header */
+    text-align: center; /* Center text within sections */
+}
+
+/* Header's internal sections - reset properties that might conflict */
+header section {
+    width: 100%; /* Make internal sections fill header width */
+    padding: 0 15px; /* Add some horizontal padding inside sections */
+    box-sizing: border-box; /* Crucial for padding to not exceed width */
+    margin-bottom: 20px; /* Space between sections */
+}
+header section:last-child {
+    margin-bottom: 0; /* No margin below the last section */
+}
+
+/* Profile Image Section */
+.profile-image img {
+    margin: 15px auto;
+    display: block;
+    width: 120px;
+    height: 120px; /* Explicit height to ensure roundness */
+    border: 8px solid rgba(255, 255, 255, 0.15); /* Semi-transparent white border */
+    border-radius: 50%; /* Perfect circle */
+    object-fit: cover; /* Ensures image covers the area nicely */
+    vertical-align: middle; /* Good practice for images */
+}
+
+.profile-image h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0 0 0; /* Adjust spacing */
+    color: #ecf0f1; /* Light color for name */
+}
+
+/* Social Media Styles */
+.social-media ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: center; /* Center items horizontally */
+    gap: 10px; /* Space between icons */
+}
+.social-media a {
+    display: inline-flex; /* Allows centering of icon within link area */
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Makes the clickable area round */
+    transition: background-color 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+}
+.social-media a:hover {
+    background-color: #3498db; /* Blue on hover */
+}
+.social-media img {
+    width: 30px; /* Ensure images are sized correctly */
+    height: 30px;
+    display: block; /* Remove any inline-block spacing */
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Essential for vertical stacking of nav items */
+    flex-direction: column; /* Stacks links vertically */
+}
+nav a {
+    text-decoration: none;
+    color: #a8a9b4; /* Default link color */
+    font-size: 16px;
+    font-weight: 400;
+    padding: 12px 15px; /* Adjust padding for links */
+    display: flex; /* Make link fill the available space and allow centering */
+    align-items: center;
+    white-space: nowrap;
+    transition: background-color 0.3s, color 0.3s;
+    width: 100%; /* Link takes full width of its parent nav ul */
+    box-sizing: border-box; /* Include padding in width */
+    border-radius: 4px; /* Slightly rounded corners for links */
+}
+nav a:hover,
+nav a.active { /* Add an 'active' class for the current page */
+    background-color: #3498db; /* Blue background on hover/active */
+    color: white; /* White text on hover/active */
+}
+
+
+/* Main Content Area */
+main {
+    margin-left: 280px; /* IMPORTANT: Matches header's width (280px) */
+    width: calc(100% - 280px); /* Fills remaining width */
+    padding: 20px; /* Padding inside the main content area */
+    box-sizing: border-box; /* Include padding in width calculation */
+    flex-grow: 1; /* Allows main to expand and fill space */
+    background-color: #f8f8f8; /* Light background for main content */
+    min-height: 100vh; /* Ensure main takes full height */
+
+    /* New Flexbox properties for main to manage sections */
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+}
+
+/* Specifically for the Home Section - Middle Left Positioning */
+#Home {
+    margin: -20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;     /* Vertically center the text */
+    align-items: flex-start;     /* Align text to the left */
+
+    padding-left: 50px;
+    padding-right: 25px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    background-image: url("images/background.JPG");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    position: relative;
+    z-index: 1;
+
+    min-height: 100vh; /* Ensure full height */
+}
+
+
+/* Also update the ::before pseudo-element */
+#Home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    border-radius: 0;
+}
+
+/* Ensure headings/paragraphs within Home don't inherit unwanted centering */
+#Home h2{
+    text-align: left;
+    color: white;
+    padding-left: 0; /* Remove this as padding is now on #Home itself */
+    padding-right: 0; /* Remove this as padding is now on #Home itself */
+    padding-top: 10px; /* Remove this if you added it earlier for top/bottom spacing */
+    padding-bottom: 0px; /* Remove this if you added it earlier for top/bottom spacing */
+    font-size: 4rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 0; /* Remove bottom margin to avoid extra space */
+    border-bottom: 2px solid #3498db;
+    display: inline-block;            /* fixes growing underline issue */
+    width: auto;                      /* avoids 100% line stretching or animation bugs */
+}
+.home-content {
+    transform: translateY(27%); /* Moves the block downward into the lower half */
+    padding-left: 100px;
+    max-width: 700px;           /* Optional: to control width of the text block */
+    color: white;
+}
+
+#Home h3 {
+    font-size: 2rem;
+    font-weight: normal;
+    color: #eee;
+    margin-bottom: 30px;
+}
+
+
+
+/* Other Main Section Specific Styles */
+#About_Me img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main h2 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+
+
+main h3 {
+    color: #34495e; /* Subheading color */
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+main p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+main ul {
+    list-style: disc;
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+main ul ul {
+    list-style: circle;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+main a {
+    color: #3498db;
+    text-decoration: none;
+}
+main a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer */
+footer {
+    width: calc(100% - 280px); /* Matches main content width */
+    margin-left: 280px; /* Aligns with main content */
+    padding: 20px;
+    text-align: center;
+    background-color: #eee; /* Lighter background for footer */
+    color: #777;
+    border-top: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+
+/* --- Responsive Design --- */
+
+/* For devices smaller than 1024px (e.g., larger tablets in landscape) */
+@media (max-width: 1024px) {
+    header {
+        width: 220px; /* Slightly reduce sidebar width */
+        padding: 15px 0;
+    }
+    .profile-image img {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-image h1 {
+        font-size: 20px;
+    }
+    nav a {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    main {
+        margin-left: 220px;
+        width: calc(100% - 220px);
+    }
+    footer {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+}
+
+
+/* For devices smaller than 768px (common breakpoint for tablets/phones) */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Stack header and main content vertically */
+    }
+
+    header {
+        position: static; /* Header becomes part of the normal flow (top bar) */
+        width: 100%; /* Full width */
+        height: auto; /* Height adapts to content */
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        flex-direction: row; /* Arrange internal sections horizontally */
+        justify-content: space-around; /* Distribute items */
+        align-items: center; /* Vertically align items */
+        flex-wrap: wrap; /* Allow items to wrap if needed */
+        border-right: none; /* Remove side border */
+        border-bottom: 1px solid #444; /* Add bottom border */
+    }
+
+    header section {
+        margin-bottom: 0; /* Remove vertical margins between sections */
+        padding: 0; /* Remove horizontal padding, let flexbox handle spacing */
+    }
+    #Profile_Image, #Social_Media, #navigation {
+        width: auto;
+        flex-basis: auto;
+    }
+
+    #Profile_Image {
+        order: 1; /* Profile image first */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 15px; /* Add some space to the right if next item is on the same line */
+    }
+
+    #Profile_Image img {
+        width: 70px; /* Smaller image on mobile */
+        height: 70px;
+        margin: 0 auto 5px auto; /* Adjust margin */
+        border: 3px solid rgba(255, 255, 255, 0.15); /* Smaller border */
+    }
+
+    #Profile_Image h1 {
+        font-size: 1.1em; /* Smaller name font */
+        white-space: nowrap; /* Prevent name from wrapping (if short) */
+    }
+
+    #Social_Media {
+        order: 3; /* Move social media to a new line / below navigation */
+        flex-basis: 100%; /* Force social media to take full width */
+        margin-top: 15px; /* Space from above elements */
+    }
+
+    #Social_Media ul {
+        gap: 10px; /* Consistent gap */
+    }
+    #Social_Media a {
+        width: 35px; /* Smaller social icons */
+        height: 35px;
+    }
+    #Social_Media img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #navigation {
+        order: 2; /* Navigation section in the middle top */
+        flex-basis: 100%; /* Take full width */
+        margin-top: 15px; /* Space from profile image */
+        text-align: center; /* Center the nav items */
+    }
+
+    nav ul {
+        flex-direction: row; /* Arrange nav links horizontally */
+        flex-wrap: wrap; /* Allow links to wrap to next line if needed */
+        justify-content: center; /* Center nav links */
+        gap: 8px; /* Space between horizontal links */
+        padding-bottom: 0; /* Remove bottom padding */
+    }
+
+    nav a {
+        padding: 8px 12px; /* Smaller padding for mobile links */
+        font-size: 0.95em; /* Smaller font for links */
+        width: auto; /* Let content determine width */
+        white-space: nowrap; /* Prevent links from wrapping internally */
+    }
+
+    /* Main and Footer adjustments for mobile */
+    main, footer {
+        margin-left: 0; /* Remove left margin */
+        width: 100%; /* Take full width */
+        padding: 15px; /* Slightly less padding on mobile */
+    }
+
+    main section {
+        padding: 20px; /* Adjust section padding */
+        margin-bottom: 30px;
+    }
+    main h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    /* Adjust Home section for mobile */
+    #Home {
+        flex-grow: unset; /* Don't force it to grow on mobile if other sections follow */
+        min-height: auto; /* Allow height to be auto */
+        justify-content: flex-start; /* Don't force vertical centering if content gets long */
+        padding: 20px; /* Adjust padding for mobile */
+    }
+}
+
+/* For very small devices (e.g., iPhone SE portrait) */
+@media (max-width: 480px) {
+    #Profile_Image h1 {
+        font-size: 1em; /* Even smaller font */
+    }
+    nav a {
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+    main section {
+        padding: 15px;
+    }
+    main h2 {
+        font-size: 1.5em;
+    }
+}
+
+#animated-phrases {
+    font-size: 2rem; /* Adjust as needed */
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    color: #fff;
+}
+
+.blinking-cursor {
+    font-weight: 100;
+    font-size: 2rem;
+    color: white;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

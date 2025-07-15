@@ -162,7 +162,7 @@ main {
     padding-top: 0;
     padding-bottom: 0;
 
-    background-image: url("./images/background.JPG");
+    
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -186,6 +186,7 @@ main {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
     border-radius: 0;
+    background-image: url("./images/background.JPG");
 }
 
 /* Ensure headings/paragraphs within Home don't inherit unwanted centering */

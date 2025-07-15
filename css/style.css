@@ -162,7 +162,7 @@ main {
     padding-top: 0;
     padding-bottom: 0;
 
-    background-image: url("images/background.JPG");
+    background-image: url("./images/background.JPG");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

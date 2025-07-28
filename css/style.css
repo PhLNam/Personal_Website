@@ -1,512 +1,565 @@
 /* ===================================================================
-   1. GLOBAL STYLES & RESETS
+  1. GLOBAL STYLES & RESETS
 =================================================================== */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* ===================================================================
-   1. BASE STYLES / GLOBAL SETTINGS
-=================================================================== */
 html {
-    font-size: 16px; /* Default for most browsers, 1rem = 16px */
+  font-size: 16px; /* This is the root font size, 1rem = 16px */
 }
 
 body {
-    font-family: 'Arial', sans-serif; /* Use your preferred font */
-    font-size: 1em; /* This ensures body text is 16px (1em of html's 16px) */
-    line-height: 1.6;
-    color: #555;
-    margin: 0;
-    padding: 0;
+  font-family: 'Arial', sans-serif; /* Your preferred font */
+  font-size: 1.15em; /* Sets the base font size for the whole document (16px * 1.15 = 18.4px) */
+  line-height: 1.6;
+  color: #555; /* Default body text color, often a good fallback for many elements */
+  margin: 0;
+  padding: 0;
 }
 
-h1 { font-size: 2.8em; line-height: 1.2; margin-top: 0.8em; margin-bottom: 0.4em; color: white; }
-h2 { font-size: 2.2em; line-height: 1.2; margin-top: 1em; margin-bottom: 0.5em; color: white; }
-h3 { font-size: 1.6em; line-height: 1.3; margin-top: 1em; margin-bottom: 0.5em; color: white; }
-h4 { font-size: 1.2em; line-height: 1.4; margin-top: 0.8em; margin-bottom: 0.4em; color: white; }
+/* Headings will automatically scale proportionally relative to the new body font-size */
+/* IMPORTANT: Changed these to a dark color for all general headings, */
+/* as #Home will override them specifically for its content. */
+h1 { font-size: 2.8em; line-height: 1.2; margin-top: 0.8em; margin-bottom: 0.4em; color: #333333; } /* Changed to dark */
+h2 { font-size: 2.2em; line-height: 1.2; margin-top: 1em; margin-bottom: 0.5em; color: #333333; } /* Changed to dark */
+h3 { font-size: 1.6em; line-height: 1.3; margin-top: 1em; margin-bottom: 0.5em; color: #333333; } /* Changed to dark */
+h4 { font-size: 1.2em; line-height: 1.4; margin-top: 0.8em; margin-bottom: 0.4em; color: #333333; } /* Changed to dark */
 
 p {
-    font-size: 1em;
-    line-height: 1.6;
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 ul, ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 li {
-    font-size: 1em;
-    margin-bottom: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 /* ===================================================================
-   2. MAIN LAYOUT (HEADER/SIDEBAR, MAIN CONTENT, FOOTER)
+  2. MAIN LAYOUT (HEADER/SIDEBAR, MAIN CONTENT, FOOTER)
 =================================================================== */
 
 /* --- Header (Side Navigation Bar) --- */
 header {
-    color: white;
-    background-color: #2c3e50;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    padding: 20px 0;
-    width: 280px;
-    height: 100vh;
-    overflow-y: auto;
-    border-right: 1px solid #444;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-header section {
-    width: 100%;
-    padding: 0 15px;
-    margin-bottom: 20px;
+  color: white; /* Header text remains white */
+  background-color: #2c3e50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  width: 280px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 /* --- Main Content Area --- */
 #content-wrapper {
-    margin-left: 280px;
-    width: calc(100% - 280px);
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 main {
-    flex-grow: 1;
-    padding: 20px;
+  flex-grow: 1;
+  padding: 20px;
 }
 
 main section {
-    padding: 25px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 main section:not(:last-of-type) {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 /* --- Footer --- */
 footer {
-    padding: 20px;
-    text-align: center;
-    background-color: #eee;
-    color: #777;
-    border-top: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  background-color: #eee;
+  color: #777;
+  border-top: 1px solid #ddd;
 }
 
 /* ===================================================================
-   3. TYPOGRAPHY & GENERAL CONTENT STYLES
+  3. TYPOGRAPHY & GENERAL CONTENT STYLES
 =================================================================== */
+/* These rules already specify dark colors and are more specific than global h2/h3, so they'll work */
 main h2 {
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    color: #34495e;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  color: #34495e;
 }
 
 main h3 {
-    color: #34495e;
-    margin-top: 0; /* Changed */
-    margin-bottom: 15px;
-    font-weight: bold;
+  color: #34495e;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
-main p{
-    margin-bottom: 15px;
-    line-height: 1.7;
-    font-size: 1.15em;
+main p {
+  margin-bottom: 15px;
+  line-height: 1.7;
+  font-size: 1.2em;
+  line-height: inherit; 
 }
 
 /* ===================================================================
-   4. HEADER COMPONENTS (PROFILE, SOCIALS, NAV)
+  4. HEADER COMPONENTS (PROFILE, SOCIALS, NAV)
 =================================================================== */
 
 .profile-image img {
-    margin: 15px auto;
-    display: block;
-    width: 120px;
-    height: 120px;
-    border: 8px solid rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    object-fit: cover;
+  margin: 15px auto;
+  display: block;
+  width: 120px;
+  height: 120px;
+  border: 8px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
+/* This h1 is already correctly white as it's within the dark header */
 .profile-image h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 10px 0 0 0;
-    color: #ecf0f1;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0 10px 0;
+  color: #ecf0f1;
+  text-align: center;
 }
 
 .social-media ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0 10px 0;
 }
 
 .social-media a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
 }
 
 .social-media a:hover {
-    background-color: #3498db;
+  background-color: #3498db;
 }
 
 .social-media img {
-    width: 24px; /* Standardized icon size */
-    height: 24px;
-    filter: invert(1);
+  width: 24px; /* Standardized icon size */
+  height: 24px;
+  filter: invert(1);
 }
 
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #a8a9b4;
-    font-size: 18px;
-    padding: 14px 15px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 4px;
+  text-decoration: none;
+  color: #a8a9b4;
+  font-size: 18px;
+  padding: 14px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  justify-content: flex-start;
 }
 
 nav a:hover,
 nav a.active {
-    background-color: #3498db;
-    color: white;
+  background-color: #3498db;
+  color: white;
 }
 
 nav a img {
-    width: 24px;
-    height: 24px;
-    filter: invert(0.8);
-    transition: filter 0.3s;
+  width: 24px;
+  height: 24px;
+  filter: invert(0.8);
+  transition: filter 0.3s;
+  margin-left: 15px;
 }
 
 nav a:hover img,
 nav a.active img {
-    filter: invert(1);
+  filter: invert(1);
 }
 
 /* ===================================================================
-   5. PAGE-SPECIFIC SECTION STYLES
+  5. PAGE-SPECIFIC SECTION STYLES
 =================================================================== */
 
 /* --- Home Section --- */
 #Home {
-    min-height: 100vh;
-    border-radius: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    text-align: left;
-    padding: 40px;
-    background: url("../images/background.JPG") center/cover no-repeat;
-    position: relative;
-    color: white;
-    margin: -20px -20px 40px -20px;
+  min-height: 100vh;
+  border-radius: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 40px;
+  background: url("../images/background.JPG") center/cover no-repeat;
+  position: relative;
+  color: white; /* This makes all text inside #Home white by default */
+  margin: -20px -20px 40px -20px;
 }
 
 #Home::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .home-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1000px; /* Adjust this value as desired */
+  position: relative;
+  z-index: 1;
+  max-width: 1000px; /* Adjust this value as desired */
+  margin-left: 50px;
+}
+
+/* Explicitly make sure headings within #Home are white to override global rules */
+#Home h1,
+#Home h2,
+#Home h3,
+#Home h4 {
+  color: white; /* Ensures these headings are white */
 }
 
 #Home h2 {
-    text-align: left;
-    color: white;
-    padding-left: 0; /* Remove this as padding is now on #Home itself */
-    padding-right: 0; /* Remove this as padding is now on #Home itself */
-    padding-top: 100px; /* Remove this if you added it earlier for top/bottom spacing */
-    padding-bottom: 0px; /* Remove this if you added it earlier for top/bottom spacing */
-    font-size: 4rem;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 0; /* Remove bottom margin to avoid extra space */
-    border-bottom: 2px soli d #3498db;
-    display: inline-block;            /* fixes growing underline issue */
-    width: auto;                      /* avoids 100% line stretching or animation bugs */
+  text-align: left;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0px;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  border-bottom: 2px solid #3498db;
+  display: inline-block;
+  width: auto;
 }
 
 #Home h3 {
-    font-size: 2rem;
-    color: #eee;
-    margin-top: 30px;
-    margin-bottom: 0px; /* Reduced space between h3 and h1 */
+  font-size: 2rem;
+  color: #eee; /* Kept slightly off-white for subtle distinction if desired */
+  margin-top: 40px;
+  margin-bottom: 0;
 }
-#Home h1{
-    margin-bottom: 0px; /* Reduced space between h1 and h3 */
+
+#Home h1 {
+  margin-bottom: 0;
 }
 
 #animated-phrases {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 10px; /* Adds a small gap between h3 and h1 */
-    display: block; /* Ensures it's a block-level element */
-
-    /* The key change: Set a fixed width or max-width */
-    /* Calculate the width needed for your longest phrase ("Actively Seeking Internship & Part-Time Opportunities")
-       at 2rem font-size. You might need to adjust this value. */
-    width: 100%; /* Start with 100% of its parent's content area */
-    max-width: 1000px; /* Set a specific max-width based on your longest phrase */
-                       /* This `max-width` on `#animated-phrases` needs to be considered in relation to
-                          the `max-width` on `.home-content` which is also 600px.
-                          You might need to make `#animated-phrases` slightly smaller or give it a fixed width. */
-    min-height: 2.5em; /* Keep this to prevent vertical jumps */
-
-    white-space: nowrap; /* Prevents the text from wrapping to a new line */
-    overflow: hidden;    /* Hides any content that overflows the element's box */
-    text-overflow: ellipsis; /* Displays an ellipsis (...) to indicate clipped text */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 2.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white; /* Ensuring this is also white */
 }
 
-
 .blinking-cursor {
-    font-weight: 100;
-    font-size: 2rem;
-    animation: blink 0.7s infinite;
-    vertical-align: middle;
+  font-weight: 100;
+  font-size: 2rem;
+  animation: blink 0.7s infinite;
+  vertical-align: middle;
+  color: white; /* Ensuring this is also white */
 }
 
 @media (max-width: 768px) {
-    #Home h2 { font-size: 2.5rem; }
-    #Home h3, #animated-phrases {
-        font-size: 1.5rem;
-        max-width: 90%; /* Adjust for smaller screens, or set a specific fixed width */
-        min-height: 1.8em; /* Adjust for smaller font-size */
-    }
-    .home-content {
-        max-width: 90%; /* Adjust for smaller screens */
-    }
+  #Home h2 { font-size: 2.5rem; }
+  #Home h3, #animated-phrases {
+    font-size: 1.5rem;
+    max-width: 90%;
+    min-height: 1.8em;
+  }
+  .home-content {
+    max-width: 90%;
+  }
 }
 
 /* --- About Me Section --- */
 .about-content-flex {
-    display: flex;
-    align-items: flex-start; /* Aligns items to the top of the flex container */
-    gap: 40px; /* Space between the image and the text block */
-    margin-top: 25px;
-    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+  display: flex;
+  align-items: flex-start; /* Aligns items to the top of the flex container */
+  gap: 40px; /* Space between the image and the text block */
+  margin-top: 25px;
+  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
 }
 
 .about-content-flex .about-image {
-    max-width: 300px; /* Max width for the image */
-    flex-shrink: 0; /* Prevents the image from shrinking too much */
-    border-radius: 12px;
-    object-fit: cover;
+  max-width: 300px; /* Max width for the image */
+  flex-shrink: 0; /* Prevents the image from shrinking too much */
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 .about-content-flex > div {
-    flex-grow: 1; /* Allows the text content div to grow and take available space */
+  flex-grow: 1; /* Allows the text content div to grow and take available space */
 }
 
 .about-content-flex ul {
-    list-style: none; /* Remove default list style (bullets) */
-    padding: 0;
-    margin-top: 20px; /* Space above the list itself */
-
-    /* --- Two-Column List Layout --- */
-    column-count: 2; /* Splits the list into two columns */
-    column-gap: 30px; /* Space between the two columns */
+  list-style: none; /* Remove default list style (bullets) */
+  padding: 0;
+  margin-top: 20px; /* Space above the list itself */
+  column-count: 2; /* Splits the list into two columns */
+  column-gap: 30px; /* Space between the two columns */
 }
 
 .about-content-flex li {
-    font-size: 1.1em; /* Increased font size for list items */
-    margin-bottom: 15px; /* Increased vertical distance between list items */
-    break-inside: avoid; /* Prevents a list item from splitting across columns */
-    position: relative; /* Essential for positioning the custom marker */
-    padding-left: 25px; /* Creates space for the custom marker and its distance to text */
+  font-size: 1.1em; /* Increased font size for list items */
+  margin-bottom: 15px; /* Increased vertical distance between list items */
+  break-inside: avoid; /* Prevents a list item from splitting across columns */
+  position: relative; /* Essential for positioning the custom marker */
+  padding-left: 25px; /* Creates space for the custom marker and its distance to text */
+  color: #333333; /* Explicitly make list items dark if not inherited from body */
 }
 
 /* --- Custom List Dots (`::before` pseudo-element) --- */
 .about-content-flex li::before {
-    content: "➤"; /* Your desired custom dot (e.g., "✔", "⭐", "•", "➤") */
-    color: #3498db; /* Color for your custom dot */
-    position: absolute;
-    left: 0; /* Positions the dot at the very left of the padding-left space */
-    top: 0.1em; /* Fine-tunes the vertical alignment of the dot with the text */
-    font-weight: bold; /* Makes the dot bolder */
+  content: "➤"; /* Your desired custom dot (e.g., "✔", "⭐", "•", "➤") */
+  color: #3498db; /* Color for your custom dot */
+  position: absolute;
+  left: 0; /* Positions the dot at the very left of the padding-left space */
+  top: 0.1em; /* Fine-tunes the vertical alignment of the dot with the text */
+  font-weight: bold; /* Makes the dot bolder */
 }
 
-
 /* --- Responsive Design for About Me list --- */
-/* --- Small Devices (Portrait Tablets, Phones) --- */
 @media (max-width: 768px) {
-    /* ... existing header, content-wrapper, main, nav adjustments ... */
+  .about-content-flex {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center items when stacked vertically */
+    gap: 20px; /* Adjust gap for stacked items */
+  }
+  .about-content-flex .about-image {
+    max-width: 250px; /* Smaller image size on mobile */
+  }
 
-    /* --- About Me Section Responsive Adjustments --- */
-    .about-content-flex {
-        flex-direction: column; /* Stack image and text vertically */
-        align-items: center; /* Center items when stacked vertically */
-        gap: 20px; /* Adjust gap for stacked items */
-    }
-    .about-content-flex .about-image {
-        max-width: 250px; /* Smaller image size on mobile */
-    }
-
-    .about-content-flex ul {
-        column-count: 1; /* Revert to a single column on smaller screens */
-        column-gap: 0; /* No gap needed for single column */
-        margin-top: 15px; /* Adjust spacing above the list for mobile */
-    }
-    .about-content-flex li {
-        font-size: 1em; /* Slightly smaller font size for list items on mobile */
-        margin-bottom: 10px; /* Slightly less vertical margin between list items on mobile */
-        padding-left: 20px; /* Slightly less padding for the dot on mobile */
-    }
+  .about-content-flex ul {
+    column-count: 1; /* Revert to a single column on smaller screens */
+    column-gap: 0; /* No gap needed for single column */
+    margin-top: 15px; /* Adjust spacing above the list for mobile */
+  }
+  .about-content-flex li {
+    font-size: 1em; /* Slightly smaller font size for list items on mobile */
+    margin-bottom: 10px; /* Slightly less vertical margin between list items on mobile */
+    padding-left: 20px; /* Slightly less padding for the dot on mobile */
+  }
 }
 
 /* --- Resume Section --- */
-/* Main container for all resume cards (Education, Skills, Experience) */
+/* Main container for all resume cards (Experience, etc.) */
 .resume-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 30px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+  justify-content: center;
 }
+
+/* NEW: Specific container for Education and Languages & Skills to enable side-by-side */
+.education-languages-section {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next line on smaller screens */
+  gap: 30px; /* Space between the two columns */
+  width: 100%; /* Ensures this flex container takes full available width */
+  margin-bottom: 30px; /* Add some space below this group if other resume cards follow */
+}
+
+/* Container for the two main columns */
+.awards-conferences-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+    gap: 30px; /* Space between the two main columns */
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 40px; /* Space above this section */
+}
+
+/* This targets the two main columns: .conferences-volunteering-group AND the Honors & Awards div */
+.awards-conferences-section > div {
+    flex: 1; /* Allows both main columns to grow and shrink equally */
+    min-width: 300px; /* A reasonable minimum width for each main column before wrapping */
+
+    /* Apply card styling to the main columns */
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+/* New: Style for the group holding Conferences & Seminars + Volunteering */
+.conferences-volunteering-group {
+    display: flex; /* Make this group a flex container */
+    flex-direction: column; /* Stack its contents (Conferences, Volunteering) vertically */
+    /* No need for background/padding/shadow here as it's handled by .awards-conferences-section > div */
+}
+
+/* Ensure the direct children within the group don't have extra styling or margins
+   that would break the desired spacing or card appearance. */
+.conferences-volunteering-group > div {
+    /* No specific styling needed here, as they are just content holders */
+    /* Reset any inherited margins if necessary for tighter packing */
+    margin: 0;
+    padding: 0; /* Important: remove default padding/background if they came from .awards-conferences-section > div */
+}
+
+.education-languages-section .resume-card{ /* Apply this to the new section's cards as well */
+  flex: 1 1 calc(50% - 15px); /* Each card takes roughly 50% width minus half the gap */
+  min-width: 300px; /* Ensures they don't get too small before wrapping */
+}
+
 
 .resume-card {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: calc(50% - 15px);
-    min-width: 320px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  /* Default for other resume cards - take full width unless in a flex container */
+  width: 100%;
+  min-width: 320px; /* Keep a minimum width */
 }
 
+/* Specific styling for the Education and Languages/Skills cards within their new container */
+.education-languages-section .resume-card {
+  flex: 1 1 calc(50% - 15px); /* Each card takes roughly 50% width minus half the gap */
+  min-width: 300px; /* Ensures they don't get too small before wrapping */
+}
+
+
 .resume-card h3 {
-    color: #34495e;
-    margin-top: 0;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #3498db; /* Your accent color for the line */
-    padding-bottom: 10px;
-    font-size: 1.6em; /* Example: 1.6 * 16px = 25.6px - a good size for section headings within cards */
+  color: #34495e;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #3498db; /* Your accent color for the line */
+  padding-bottom: 10px;
+  font-size: 1.6em; /* Example: 1.6 * 16px = 25.6px - a good size for section headings within cards */
 }
 
 /* --- Education Timeline Specific Styles --- */
 .education-timeline {
-    list-style: none;
-    padding-left: 10px;
-    position: relative;
+  list-style: none;
+  padding-left: 10px;
+  position: relative;
 }
 .education-timeline li {
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 30px;
-    font-size: 1em; /* Ensure consistency */
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 30px;
+  color: #333333; /* Ensure timeline list items are dark */
 }
 /* Circle for each timeline item */
 .education-timeline li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 15px;
-    height: 15px;
-    background-color: #3498db;
-    border-radius: 50%;
-    z-index: 2;
-    border: 3px solid #fff;
-    box-shadow: 0 0 0 2px #3498db;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  background-color: #3498db;
+  border-radius: 50%;
+  z-index: 2;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #3498db;
 }
 /* Vertical line connecting timeline items */
 .education-timeline li::after {
-    content: '';
-    position: absolute;
-    left: 7.5px;
-    top: 20px;
-    bottom: -30px;
-    width: 2px;
-    background-color: #3498db;
-    z-index: 1;
+  content: '';
+  position: absolute;
+  left: 7.5px;
+  top: 20px;
+  bottom: -30px;
+  width: 2px;
+  background-color: #3498db;
+  z-index: 1;
 }
 
 /* Hides the vertical line for the very last item in the timeline */
 .education-timeline li:last-child::after {
-    display: none;
+  display: none;
 }
 /* Styles for specific text elements within the timeline items */
 .education-timeline .timeline-content > span {
-    display: block;
-    margin-bottom: 4px;
+  display: block;
+  margin-bottom: 4px;
 }
 .education-timeline .university-name { font-size: 1.05em; font-weight: bold; color: #2c3e50; }
 .education-timeline .study-name { font-style: italic; color: #34495e; font-size: 1em; }
 .education-timeline .description { font-size: 0.95em; color: #555; margin: 5px 0 0 0; }
 .education-timeline .duration { font-size: 0.9em; font-weight: bold; color: #3498db; }
 
-
 /* --- Languages & Skills Inner Columns --- */
 .languages-skills-columns {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
-    align-items: flex-start; /* Ensures content in columns aligns at the top */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: flex-start; /* Ensures content in columns aligns at the top */
 }
 
 .language-column-left,
 .language-column-right,
 .soft-skills-column-left,
 .soft-skills-column-right {
-    flex: 1;
-    min-width: 120px;
+  flex: 1;
+  min-width: 120px;
 }
 
 /* --- HIGHLIGHTING & STYLING FOR H4 HEADINGS (Languages, Soft Skills, Programming Skills) --- */
-.language-column-left h4,
-.soft-skills-column-left h4,
-.resume-card > h4 { /* Targets the "Programming Skills" h4 now it's a direct child of .resume-card */
-    background-color: #e6f7ff; /* A very light blue for the highlight */
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block; /* Makes background wrap around the text */
-    margin-top: 0; /* Remove global h4 top margin */
-    margin-bottom: 15px; /* Adjust spacing below the highlighted heading */
-    font-size: 1.05em; /* Slightly larger/more prominent than list items */
-    font-weight: bold;
-    color: #2c3e50;
-    line-height: 1.2;
+.languages-skills-card h4 { /* Targets h4 specifically within languages-skills-card */
+  background-color: #e0f2f7; /* Keep the light blue background for the highlight effect */
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.05em;
+  font-weight: bold;
+  color: #1A2E44; /* This is correctly dark */
+  line-height: 1.2;
 }
 
 /* --- General List Styling for .vertical-list and .skill-list --- */
@@ -514,196 +567,514 @@ nav a.active img {
 
 /* Adjust margin-top for all .vertical-list instances for alignment */
 .vertical-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 15px;
-    /* Adjust this margin-top to align the first list item with the highlighted h4.
-       You might need to fine-tune this value visually (e.g., 0px, 5px, or -5px) */
-    margin-top: 5px; /* A common starting point for visual alignment */
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+  margin-top: 5px; /* A common starting point for visual alignment */
 }
 
 /* This applies to regular list items, ensures consistency with body text size */
 .vertical-list li {
-    font-size: 1em; /* Make it the same as body text (16px) */
-    margin-bottom: 8px;
+  margin-bottom: 8px;
+  color: #333333; /* Ensure vertical list items are dark */
+}
+
+.skill-dots {
+  display: inline-block; /* Essential for sizing and positioning */
+  vertical-align: middle; /* Aligns the bar nicely with the text */
+  margin-left: 10px; /* Space between the text and the bar */
+  width: 60px; /* This is the total width of the empty bar */
+  height: 10px; /* This is the height of the bar */
+  background-color: #eee; /* This is the color of the empty part of the bar */
+  border-radius: 5px; /* Slightly rounded corners for the bar */
+  overflow: hidden; /* Crucial: Hides any part of the filled bar that goes beyond its container */
+  position: relative; /* Essential: Allows ::after to be positioned absolutely within this span */
+}
+
+/* This pseudo-element creates the *filled* portion of the skill bar */
+.skill-dots::after {
+  content: ""; /* Needs to be present for pseudo-elements to render */
+  position: absolute; /* Positions it relative to its parent (.skill-dots) */
+  top: 0;
+  left: 0;
+  height: 100%; /* Makes the filled part take the full height of its parent */
+  background-color: #a7d9ed; /* Changed to a medium, softer blue */
+  border-radius: 5px; /* Matches the parent's border-radius */
+  transition: width 0.5s ease-out; /* Smooth animation when the width changes */
+  /* The 'width' of this element will be set by the data-level rules below */
+}
+
+/* These rules set the width of the filled portion based on the 'data-level' attribute */
+.skill-dots[data-level="1"]::after { width: 20%; }
+.skill-dots[data-level="2"]::after { width: 40%; }
+.skill-dots[data-level="3"]::after { width: 60%; } /* Intermediate */
+.skill-dots[data-level="4"]::after { width: 80%; } /* Upper-intermediate */
+.skill-dots[data-level="5"]::after { width: 100%; } /* Native/Fluent */
+
+.skill-tag {
+  display: inline-block;
+  background-color: #a7d9ed; /* Keep as light blue */
+  color: #2c3e50; /* This is already dark */
+  padding: 4px 10px;
+  border-radius: 15px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
+  border: 1px solid #9adbf5; /* Keep as medium blue */
+  transition: background-color 0.3s ease;
+}
+
+.skill-tag:hover {
+  background-color: #c6e3ed; /* Keep as slightly darker blue on hover */
+  cursor: default;
+}
+
+.skill-tag.soft-skill {
+  background-color: #e0f7f2; /* Light muted green/teal */
+  border: 1px solid #a7ede0; /* Medium muted green/teal */
+  color: #2c3e50; /* Keep text dark */
+}
+
+.skill-tag.soft-skill:hover {
+  background-color: #c6ede3; /* Slightly darker muted green/teal on hover */
+}
+
+/* --- Darker blue for highlighted skills (Problem Solving, Python, etc.) --- */
+.skill-tag.highlight {
+  background-color: #2979b0; /* Your chosen darker blue for highlight */
+  color: white; /* White text for contrast */
+  border: 1px solid #2979b0; /* Matching darker blue border */
+}
+
+.skill-tag.highlight:hover {
+  background-color: #1e6091; /* Even darker blue on hover for highlighted tags */
+  border: 1px solid #1e6091;
+}
+
+/* Adjust li styling to accommodate tags if needed */
+.skill-list li {
+  margin-bottom: 10px; /* Space between rows of tags if they wrap */
+  padding-left: 0; /* Remove any default padding-left from ul/li */
+  list-style: none; /* Ensure no bullets */
+  color: #333333; /* Ensure skill list items are dark */
+}
+.skill-list li::before {
+  content: none; /* Explicitly remove any custom list styles for skill-list items */
 }
 
 /* --- UNMAKE SOFT SKILLS BOLD & Adjust Color --- */
 .skill-category-title {
-    font-weight: normal; /* Changed from bold to normal as requested */
-    color: inherit; /* Inherit color from parent (.vertical-list li), typically #555 */
-    margin-right: 5px;
+  color: inherit; /* Should inherit from the parent's default, which is now dark */
+  margin-right: 5px;
 }
 
 /* Styling for nested skill lists (e.g., actual programming languages, web technologies) */
 .skill-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 5px;
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
 }
 
 .skill-list li {
-    font-size: 1em; /* Ensure consistency with base text size */
-    margin-bottom: 5px;
+  margin-bottom: 5px;
+  color: #333333; /* Ensure these are dark */
+}
+
+/* Styling for the nested list of awards (e.g., Olympiad subjects) */
+.skill-list.nested-awards-list {
+  list-style: none; /* Remove default bullets */
+  padding-left: 15px; /* Indent the list slightly */
+  margin-top: 10px; /* Space from the parent item */
+}
+
+.skill-list.nested-awards-list li {
+  position: relative;
+  padding-left: 15px; /* Space for the custom bullet */
+  margin-bottom: 8px; /* Spacing between list items */
+  font-size: 0.9em; /* Slightly smaller font size */
+  color: #555; /* Neutral text color, which is dark */
+  line-height: 1.4;
+}
+
+.skill-list.nested-awards-list li::before {
+  content: "•"; /* A simple solid dot bullet */
+  color: #3498db; /* Your accent blue for the bullet */
+  position: absolute;
+  left: 0;
+  top: 0.1em; /* Adjust vertical alignment */
+  font-size: 1.1em; /* Make bullet slightly larger */
+  font-weight: bold;
+}
+
+/* --- Projects Section --- */
+.project-status-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Space between legend items */
+  margin-top: 20px;
+  margin-bottom: 30px; /* Space below the legend */
+  font-size: 0.9em;
+  align-items: center;
+}
+
+.project-status-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between dot and text */
+  color: #333333; /* Ensure legend text is dark */
+}
+
+.legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 12px; /* Size of the color dot */
+  height: 12px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* Color definitions for the legend and project cards */
+.legend-item.planning::before,
+.project-card[data-status="planning"] {
+  background-color: #fcf8e3; /* Light yellow/cream for planning */
+  border: 1px solid #f0e68c; /* Muted yellow border */
+}
+.legend-item.planning { color: #8a6d3b; } /* Already dark */
+
+
+.legend-item.in-progress::before,
+.project-card[data-status="in-progress"] {
+  background-color: #e0f2f7; /* Light blue (your existing accent for tags) */
+  border: 1px solid #a7d9ed; /* Medium blue (your existing accent for tags) */
+}
+.legend-item.in-progress { color: #3498db; } /* Already dark */
+
+
+.legend-item.done::before,
+.project-card[data-status="done"] {
+  background-color: #e8f5e9; /* Light green */
+  border: 1px solid #a7ede0; /* Medium green */
+}
+.legend-item.done { color: #2ecc71; } /* Already dark */
+
+
+/* General project card styling (mostly from previous steps) */
+.project-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 25px; /* Adjusted to allow space for legend above */
+}
+
+.project-card {
+  /* Background and border colors will be overridden by data-status rules above */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h4 {
+  font-size: 1.2em;
+  color: #34495e; /* This is already dark */
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.project-card .project-description {
+  font-size: 0.95em;
+  color: #666; /* This is already dark */
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.project-card .github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #3498db; /* Your accent blue for the link */
+  font-weight: bold;
+  font-size: 0.95em;
+  transition: color 0.2s ease;
+}
+
+.project-card .github-link:hover {
+  color: #2979b0;
+}
+
+.project-card .github-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* --- Responsive Design for Projects Section --- */
+@media (max-width: 768px) {
+  .project-cards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    padding: 20px;
+  }
+  .project-card h4 {
+    font-size: 1.1em;
+  }
+  .project-card .project-description {
+    font-size: 0.9em;
+  }
+
+  .project-status-legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .awards-conferences-section {
+        flex-direction: column; /* Stack both main columns vertically */
+        gap: 20px;
+    }
+
+    .awards-conferences-section > div {
+        flex: 1 1 100%; /* Each main column takes full width */
+        min-width: unset;
+    }
+}
+
+/* --- Contact Section Styling --- */
+.contact {
+  padding: 60px 20px; /* Adjust padding as needed */
+  text-align: center;
+  background-color: #ffffff; /* Light background for contrast */
+}
+
+.contact h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #333; /* Already dark */
+  text-align: left;
+}
+
+.contact p {
+  font-size: 1.1em;
+  color: #555; /* Already dark */
+  max-width: 700px; /* Limit paragraph width for readability */
+  margin: 0 auto 40px auto; /* Center the paragraph and add bottom margin */
+}
+
+/* Styles for Option 1: Direct Email & Icons */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: center;
+  gap: 25px; /* Space between contact items */
+  margin-top: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  text-decoration: none;
+  color: #007bff; /* Link color (blue) */
+  font-size: 1.1em;
+  padding: 12px 20px;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.contact-item:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-3px); /* Slight lift effect */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.contact-item img {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(90%) saturate(1478%) hue-rotate(200deg) brightness(97%) contrast(101%); /* Blue color for icons */
+}
+
+.contact-item:hover img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%); /* White color on hover */
 }
 
 /* ===================================================================
-   6. COMPONENT STYLES (TIMELINE, LISTS)
+  6. COMPONENT STYLES (TIMELINE, LISTS)
 =================================================================== */
 
-.education-timeline {
-    list-style: none;
-    padding-left: 10px;
-    position: relative;
+.standard-decorated-list {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  margin-top: 15px; /* Adjust spacing below the heading */
+  margin-bottom: 25px; /* Adjust spacing after the list */
 }
 
-.education-timeline li {
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 30px;
+.standard-decorated-list li {
+  position: relative;
+  padding-left: 25px; /* Space for the custom icon */
+  margin-bottom: 12px; /* Spacing between items */
+  line-height: 1.5;
+  color: #333333; /* Ensure standard list items are dark */
 }
 
-.education-timeline li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 15px;
-    height: 15px;
-    background-color: #3498db;
-    border-radius: 50%;
-    z-index: 2;
-    border: 3px solid #fff;
-    box-shadow: 0 0 0 2px #3498db;
+.standard-decorated-list li::before {
+  content: "▶"; /* Or "⭐", "●", "✓", "≫" - choose your preferred icon */
+  color: #3498db; /* Your accent blue */
+  position: absolute;
+  left: 0;
+  top: 0.1em; /* Adjust vertical alignment */
+  font-size: 0.9em; /* Make the icon slightly smaller */
+  font-weight: bold; /* Make icon bolder */
 }
 
-.education-timeline li::after {
-    content: '';
-    position: absolute;
-    left: 9px; 
-    top: 20px;
-    bottom: -30px;
-    width: 2px;
-    background-color: #3498db;
-    z-index: 1;
+.standard-decorated-list .list-item-title {
+  font-weight: bold;
+  color: #34495e; /* A slightly darker text color for emphasis */
+  display: block; /* Ensures it takes full width for text flow */
+  margin-bottom: 4px; /* Space between title and any potential description */
 }
 
-.education-timeline li:last-child::after {
-    display: none;
+/* Specific styling for the nested list under Honors */
+.nested-awards-list {
+  list-style: none; /* Inherits from .skill-list */
+  padding-left: 15px; /* Indent the nested list */
+  margin-top: 5px;
+  margin-bottom: 0;
 }
-.education-timeline .timeline-content > span {
-    display: block;
-    margin-bottom: 4px;
+
+.nested-awards-list li {
+  position: relative;
+  padding-left: 15px; /* Indent for small nested bullet */
+  margin-bottom: 5px; /* Tighter spacing for nested items */
+  font-size: 0.95em; /* Slightly smaller font for nested items */
+  color: #555; /* Neutral color for nested items, which is dark */
+  line-height: 1.4;
 }
-.education-timeline .university-name { font-size: 1.1em; font-weight: bold; color: #2c3e50; }
-.education-timeline .study-name { font-style: italic; color: #34495e; }
-.education-timeline .description { font-size: 0.9em; color: #555; margin: 5px 0 0 0; }
-.education-timeline .duration { font-size: 0.85em; font-weight: bold; color: #3498db; }
+
+.nested-awards-list li::before {
+  content: "•"; /* A simple small bullet for nested items */
+  color: #555; /* Neutral color for nested bullet, which is dark */
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-size: 0.8em;
+}
 
 /* ===================================================================
-   7. RESPONSIVE DESIGN
+  7. RESPONSIVE DESIGN
 =================================================================== */
 
 /* --- Medium Devices (Tablets, smaller desktops) --- */
 @media (max-width: 1024px) {
-    header { width: 220px; }
-    #content-wrapper { margin-left: 220px; width: calc(100% - 220px); }
-    .profile-image img { width: 100px; height: 100px; }
-    .profile-image h1 { font-size: 20px; }
-    nav a { padding: 12px; font-size: 16px; gap: 10px; }
+  header { width: 220px; }
+  #content-wrapper { margin-left: 220px; width: calc(100% - 220px); }
+  .profile-image img { width: 100px; height: 100px; }
+  .profile-image h1 { font-size: 20px; }
+  nav a { padding: 12px; font-size: 16px; gap: 10px; }
+
+  /* Adjust cards within the education/languages group for smaller screens */
+  .education-languages-section .resume-card {
+    flex: 1 1 calc(50% - 15px); /* Maintain two columns with appropriate width */
+    min-width: unset; /* Allow it to shrink more before stacking */
+  }
 }
 
 /* --- Small Devices (Portrait Tablets, Phones) --- */
 @media (max-width: 768px) {
-    body { flex-direction: column; }
-    #content-wrapper { margin-left: 0; width: 100%; }
-    main { padding: 15px; }
+  body { flex-direction: column; }
+  #content-wrapper { margin-left: 0; width: 100%; }
+  main { padding: 15px; }
 
-    header {
-        position: relative; /* Changed from static */
-        width: 100%;
-        height: auto;
-        padding: 15px;
-        border-right: none;
-        border-bottom: 1px solid #444;
-    }
+  header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid #444;
+  }
+  
+  .profile-image h1 { font-size: 1.2em; }
+  
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  nav a {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+  nav a img { display: none; } /* Hide icons to save space */
 
-    /* Toggler for mobile nav would go here if implemented */
-    
-    .profile-image h1 { font-size: 1.2em; }
-    
-    /* For simplicity, this example keeps nav visible. A JS toggler is recommended. */
-    nav ul {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-    nav a {
-        padding: 8px 12px;
-        font-size: 0.9em;
-    }
-    nav a img { display: none; } /* Hide icons to save space */
+  #Home { min-height: 60vh; }
+  #Home h2 { font-size: 2.5rem; }
+  #Home h3, #animated-phrases { font-size: 1.5rem; }
 
-    #Home { min-height: 60vh; }
-    #Home h2 { font-size: 2.5rem; }
-    #Home h3, #animated-phrases { font-size: 1.5rem; }
+  .about-content-flex { flex-direction: column; align-items: center; }
+  .about-content-flex .about-image { max-width: 250px; }
 
-    .about-content-flex { flex-direction: column; align-items: center; }
-    .about-content-flex .about-image { max-width: 250px; }
+  .resume-cards-container {
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    .card-grid { grid-template-columns: 1fr; } /* Stack cards on mobile */
-    .skills-container { column-count: 1; } /* Single column for skills */
-}
-@media (max-width: 768px) {
-    /* --- General Responsive Adjustments (keep your existing ones here too) --- */
-    html { font-size: 15px; } /* Slightly smaller base font on mobile (1rem = 15px) */
+  /* Ensure the new education-languages-section also stacks vertically on small screens */
+  .education-languages-section {
+    flex-direction: column;
+    gap: 20px; /* Adjust gap when stacked */
+  }
 
-    /* Adjust main headings for mobile based on new base font size */
-    h1 { font-size: 2.4em; }
-    h2 { font-size: 1.8em; }
-    h3 { font-size: 1.4em; }
-    h4 { font-size: 1.1em; } /* Default h4 size for mobile */
+  .resume-card {
+    flex: 1 1 100%; /* Take full width on small screens */
+    min-width: unset;
+    padding: 20px;
+  }
 
-    .resume-cards-container {
-        flex-direction: column;
-        gap: 20px;
-    }
+  .resume-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+  }
 
-    .resume-card {
-        flex: 1 1 100%;
-        min-width: unset;
-        padding: 20px;
-    }
+  .languages-skills-columns {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-    .resume-card h3 {
-        font-size: 1.4em; /* Ensure it matches the general h3 size for mobile */
-        margin-bottom: 15px;
-    }
+  .language-column-left,
+  .language-column-right,
+  .soft-skills-column-left,
+  .soft-skills-column-right {
+    min-width: unset;
+    flex: 1 1 100%;
+  }
 
-    .languages-skills-columns {
-        flex-direction: column;
-        gap: 15px;
-    }
+  /* Adjust highlighted h4 for mobile */
+  .languages-skills-card h4 { /* Target h4 specifically within languages-skills-card */
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    padding: 4px 8px;
+  }
 
-    .language-column-left,
-    .language-column-right,
-    .soft-skills-column-left,
-    .soft-skills-column-right {
-        min-width: unset;
-        flex: 1 1 100%;
-    }
-
-    /* Adjust highlighted h4 for mobile */
-    .language-column-left h4,
-    .soft-skills-column-left h4,
-    .resume-card > h4 {
-        font-size: 1.1em; /* Ensure it matches the general h4 size for mobile */
-        margin-bottom: 10px;
-        padding: 4px 8px;
-    }
-
-    .vertical-list {
-        margin-top: 0px; /* Adjust for mobile if needed */
-    }
+  .vertical-list {
+    margin-top: 0px;
+  }
 }

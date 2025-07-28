@@ -118,7 +118,7 @@ main p {
   margin-bottom: 15px;
   line-height: 1.7;
   font-size: 1.2em;
-  line-height: inherit; 
+  line-height: inherit;
 }
 
 /* ===================================================================
@@ -421,14 +421,14 @@ nav a.active img {
 
 /* This targets the two main columns: .conferences-volunteering-group AND the Honors & Awards div */
 .awards-conferences-section > div {
-    flex: 1; /* Allows both main columns to grow and shrink equally */
-    min-width: 300px; /* A reasonable minimum width for each main column before wrapping */
+  flex: 1; /* Allows both main columns to grow and shrink equally */
+  min-width: 300px; /* A reasonable minimum width for each main column before wrapping */
 
-    /* Apply card styling to the main columns */
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 25px;
+  /* Apply card styling to the main columns */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
 }
 
 /* New: Style for the group holding Conferences & Seminars + Volunteering */
@@ -439,7 +439,7 @@ nav a.active img {
 }
 
 /* Ensure the direct children within the group don't have extra styling or margins
-   that would break the desired spacing or card appearance. */
+  that would break the desired spacing or card appearance. */
 .conferences-volunteering-group > div {
     /* No specific styling needed here, as they are just content holders */
     /* Reset any inherited margins if necessary for tighter packing */
@@ -690,7 +690,7 @@ nav a.active img {
 
 .skill-list.nested-awards-list li {
   position: relative;
-  padding-left: 15px; /* Space for the custom bullet */
+  padding-left: 15px; /* Indent for small nested bullet */
   margin-bottom: 8px; /* Spacing between list items */
   font-size: 0.9em; /* Slightly smaller font size */
   color: #555; /* Neutral text color, which is dark */
@@ -734,41 +734,37 @@ nav a.active img {
   vertical-align: middle;
 }
 
-/* Color definitions for the legend and project cards */
-.legend-item.planning::before,
-.project-card[data-status="planning"] {
-  background-color: #fcf8e3; /* Light yellow/cream for planning */
-  border: 1px solid #f0e68c; /* Muted yellow border */
+/* Color definitions for the legend */
+.legend-item.planning::before {
+  background-color: #e74c3c; /* Red for in-progress */
 }
-.legend-item.planning { color: #8a6d3b; } /* Already dark */
-
-
-.legend-item.in-progress::before,
-.project-card[data-status="in-progress"] {
-  background-color: #e0f2f7; /* Light blue (your existing accent for tags) */
-  border: 1px solid #a7d9ed; /* Medium blue (your existing accent for tags) */
+.legend-item.planning {
+  color: #e74c3c; 
 }
-.legend-item.in-progress { color: #3498db; } /* Already dark */
 
-
-.legend-item.done::before,
-.project-card[data-status="done"] {
-  background-color: #e8f5e9; /* Light green */
-  border: 1px solid #a7ede0; /* Medium green */
+.legend-item.in-progress::before {
+  background-color: #f1c40f; /* Yellow for planning */
 }
-.legend-item.done { color: #2ecc71; } /* Already dark */
+.legend-item.in-progress {
+  color: #8a6d3b; 
+} /* Adjust text color to match */
+
+.legend-item.done::before {
+  background-color: #2ecc71; /* Green for done */
+}
+.legend-item.done { color: #2ecc71; }
 
 
-/* General project card styling (mostly from previous steps) */
+/* General project card styling */
 .project-cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  margin-top: 25px; /* Adjusted to allow space for legend above */
+  margin-top: 25px;
 }
 
 .project-card {
-  /* Background and border colors will be overridden by data-status rules above */
+  background-color: #ffffff; /* Explicitly white background */
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -776,6 +772,10 @@ nav a.active img {
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative; /* Needed for positioning the pseudo-element */
+  padding-left: 35px; /* Make space for the colored bar */
+  border: 1px solid #ddd; /* A subtle border for definition */
+  overflow: hidden; /* Ensures the pseudo-element doesn't spill out */
 }
 
 .project-card:hover {
@@ -783,9 +783,35 @@ nav a.active img {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* Pseudo-element for the colored left bar */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px; /* Width of the colored bar */
+  height: 100%;
+  border-top-left-radius: 12px; /* Match card border-radius */
+  border-bottom-left-radius: 12px; /* Match card border-radius */
+}
+
+/* Specific colors for the left bar based on data-status */
+.project-card[data-status="planning"]::before {
+  background-color: #e74c3c; /* Red */
+}
+
+.project-card[data-status="in-progress"]::before {
+  background-color: #f1c40f; /* Yellow */
+}
+
+.project-card[data-status="done"]::before {
+  background-color: #2ecc71; /* Green */
+}
+
+
 .project-card h4 {
   font-size: 1.2em;
-  color: #34495e; /* This is already dark */
+  color: #34495e;
   margin-top: 0;
   margin-bottom: 10px;
   line-height: 1.3;
@@ -793,7 +819,7 @@ nav a.active img {
 
 .project-card .project-description {
   font-size: 0.95em;
-  color: #666; /* This is already dark */
+  color: #666;
   margin-bottom: 20px;
   flex-grow: 1;
 }
@@ -803,7 +829,7 @@ nav a.active img {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: #3498db; /* Your accent blue for the link */
+  color: #3498db;
   font-weight: bold;
   font-size: 0.95em;
   transition: color 0.2s ease;
@@ -821,7 +847,7 @@ nav a.active img {
   fill: none;
 }
 
-/* --- Responsive Design for Projects Section --- */
+/* Responsive Design for Projects Section */
 @media (max-width: 768px) {
   .project-cards-container {
     grid-template-columns: 1fr;
@@ -830,6 +856,7 @@ nav a.active img {
 
   .project-card {
     padding: 20px;
+    padding-left: 30px; /* Adjust padding for smaller screens */
   }
   .project-card h4 {
     font-size: 1.1em;
@@ -843,6 +870,8 @@ nav a.active img {
     align-items: flex-start;
     gap: 10px;
   }
+}
+
 
   .awards-conferences-section {
         flex-direction: column; /* Stack both main columns vertically */

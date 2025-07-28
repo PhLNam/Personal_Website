@@ -870,8 +870,6 @@ nav a.active img {
     align-items: flex-start;
     gap: 10px;
   }
-}
-
 
   .awards-conferences-section {
         flex-direction: column; /* Stack both main columns vertically */
@@ -887,7 +885,7 @@ nav a.active img {
 /* --- Contact Section Styling --- */
 .contact {
   padding: 60px 20px; /* Adjust padding as needed */
-  text-align: center;
+  text-align: left;
   background-color: #ffffff; /* Light background for contrast */
 }
 
@@ -895,14 +893,13 @@ nav a.active img {
   font-size: 2.5em;
   margin-bottom: 20px;
   color: #333; /* Already dark */
-  text-align: left;
 }
 
 .contact p {
   font-size: 1.1em;
   color: #555; /* Already dark */
   max-width: 700px; /* Limit paragraph width for readability */
-  margin: 0 auto 40px auto; /* Center the paragraph and add bottom margin */
+  margin: 0 0 30px 0; /* Center the paragraph and add bottom margin */
 }
 
 /* Styles for Option 1: Direct Email & Icons */

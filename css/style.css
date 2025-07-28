@@ -898,8 +898,9 @@ nav a.active img {
 .contact p {
   font-size: 1.1em;
   color: #555; /* Already dark */
-  max-width: 700px; /* Limit paragraph width for readability */
+  max-width: auto; /* Limit paragraph width for readability */
   margin: 0 0 30px 0; /* Center the paragraph and add bottom margin */
+  
 }
 
 /* Styles for Option 1: Direct Email & Icons */
@@ -1004,10 +1005,38 @@ nav a.active img {
 }
 
 /* ===================================================================
-  7. RESPONSIVE DESIGN
+  7. RESPONSIVE DESIGN (UPDATED)
 =================================================================== */
 
+/* --- Default styles (Desktop first - sidebar) --- */
+/* Keep these as they are, defining the sidebar layout for screens wider than 768px */
+header {
+  color: white;
+  background-color: #2c3e50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  width: 280px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#content-wrapper {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 /* --- Medium Devices (Tablets, smaller desktops) --- */
+/* Keep this as it is */
 @media (max-width: 1024px) {
   header { width: 220px; }
   #content-wrapper { margin-left: 220px; width: calc(100% - 220px); }
@@ -1015,19 +1044,16 @@ nav a.active img {
   .profile-image h1 { font-size: 20px; }
   nav a { padding: 12px; font-size: 16px; gap: 10px; }
 
-  /* Adjust cards within the education/languages group for smaller screens */
   .education-languages-section .resume-card {
-    flex: 1 1 calc(50% - 15px); /* Maintain two columns with appropriate width */
-    min-width: unset; /* Allow it to shrink more before stacking */
+    flex: 1 1 calc(50% - 15px);
+    min-width: unset;
   }
 }
 
+
 /* --- Small Devices (Portrait Tablets, Phones) --- */
 @media (max-width: 768px) {
-  body { flex-direction: column; }
-  #content-wrapper { margin-left: 0; width: 100%; }
-  main { padding: 15px; }
-
+  /* HEADER: Transition from sidebar to top bar, stack elements */
   header {
     position: relative;
     width: 100%;
@@ -1035,72 +1061,173 @@ nav a.active img {
     padding: 15px;
     border-right: none;
     border-bottom: 1px solid #444;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally within the column */
+    justify-content: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
   }
-  
-  .profile-image h1 { font-size: 1.2em; }
-  
+
+  /* PROFILE IMAGE & NAME within the header */
+  .profile-image {
+    display: flex;
+    flex-direction: column; /* Stack image above h1 */
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .profile-image img {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    border-width: 4px;
+  }
+
+  .profile-image h1 {
+    font-size: 1.5em;
+    margin: 0;
+    text-align: center;
+    color: #ecf0f1;
+  }
+
+  /* SOCIAL MEDIA: Still hidden for brevity in this example */
+  .social-media {
+    display: none;
+  }
+
+  /* NAVIGATION LINKS: Adjust for top nav, centered below profile */
+  nav {
+    width: 100%;
+    margin-top: 10px;
+  }
+
   nav ul {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; /* Center the nav links */
+    padding: 0 10px;
     gap: 8px;
+    width: 100%;
   }
+
   nav a {
     padding: 8px 12px;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    gap: 5px;
+    justify-content: center;
+    flex-basis: auto;
   }
-  nav a img { display: none; } /* Hide icons to save space */
 
-  #Home { min-height: 60vh; }
-  #Home h2 { font-size: 2.5rem; }
-  #Home h3, #animated-phrases { font-size: 1.5rem; }
+  nav a img {
+    display: none;
+  }
 
-  .about-content-flex { flex-direction: column; align-items: center; }
-  .about-content-flex .about-image { max-width: 250px; }
+  /* CONTENT WRAPPER: Adjust for top nav */
+  #content-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
 
-  .resume-cards-container {
+  main {
+    padding: 15px;
+  }
+
+  /* --- HOME SECTION: Adjustments for smaller screens --- */
+    #Home {
+    min-height: 60vh;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
+    /* --- IMPORTANT CHANGE: ALIGN CONTENT TO TOP --- */
+    align-items: flex-start; /* Aligns content to the top (start of the cross-axis) */
+    /* --- END CHANGE --- */
+  }
+
+  .home-content {
+    max-width: 90%;
+    margin-left: 20px;
+    margin-top: 0; /* Ensure no unwanted top margin on the content block itself */
+    margin-bottom: 0;
+  }
+
+  #Home h2 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+  }
+
+  #Home h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  #animated-phrases {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    margin-bottom: 20px; /* Provides good space below the animated phrase */
+
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+
+    max-width: 100%;
+    min-height: 1.8em;
+  }
+
+  .blinking-cursor {
+    font-size: 1.2rem;
+  }
+
+  /* --- Other sections remain the same --- */
+  .resume-card, .project-card, .awards-conferences-section > div {
+    padding: 20px;
+    min-width: unset;
+  }
+
+  .about-content-flex,
+  .resume-cards-container,
+  .education-languages-section,
+  .awards-conferences-section,
+  .languages-skills-columns {
     flex-direction: column;
     gap: 20px;
   }
 
-  /* Ensure the new education-languages-section also stacks vertically on small screens */
-  .education-languages-section {
-    flex-direction: column;
-    gap: 20px; /* Adjust gap when stacked */
-  }
-
-  .resume-card {
-    flex: 1 1 100%; /* Take full width on small screens */
-    min-width: unset;
-    padding: 20px;
-  }
-
-  .resume-card h3 {
-    font-size: 1.4em;
-    margin-bottom: 15px;
-  }
-
-  .languages-skills-columns {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .language-column-left,
-  .language-column-right,
-  .soft-skills-column-left,
-  .soft-skills-column-right {
-    min-width: unset;
+  .education-languages-section .resume-card {
     flex: 1 1 100%;
   }
 
-  /* Adjust highlighted h4 for mobile */
-  .languages-skills-card h4 { /* Target h4 specifically within languages-skills-card */
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    padding: 4px 8px;
+  .languages-skills-card .vertical-list li {
+    display: flex;          /* Make each <li> a flex container */
+    flex-direction: column; /* Stack its immediate children (language text and skill bar) */
+    align-items: flex-start; /* Align content to the left within the stacked layout */
+    gap: 2px;               /* Small gap between the language name and the skill bar */
+    margin-bottom: 15px;    /* Increase vertical space between each language entry for clarity */
   }
 
-  .vertical-list {
-    margin-top: 0px;
+  /* Adjust the skill-dots specifically for the stacked layout */
+  .languages-skills-card .vertical-list li .skill-dots {
+    margin-left: 0; /* Remove any previous left margin that was for inline display */
+    margin-top: 5px; /* Add a small top margin to separate it from the language name */
+  }
+
+
+  .contact {
+    padding: 30px 15px;
+    text-align: center;
+  }
+
+  .contact p {
+    margin: 0 auto 20px auto;
+    text-align: center;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 15px;
   }
 }
